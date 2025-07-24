@@ -354,7 +354,7 @@ Welder
 
 
 
-## NIPS 24
+## NIPS 23
 
 
 ### ASPEN: Breaking Operator Barriers for Efficient Parallel Execution of Deep Neural Networks
