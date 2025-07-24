@@ -286,7 +286,32 @@ Unity 基于先前工作，定义了 DNN 并行系统中常见的六类基本形
 
 ## MLSys22
 
+
+###  Apollo: Automatic Partition-based Operator Fusion through Layer by Layer Optimization
 Apollow; Mind IR
+
+[【MLSys 2022】论文介绍：图算融合Apollo:-基于多层规约的自动算子融合优化框架 - 知乎](https://zhuanlan.zhihu.com/p/511821386)
+
+- **Memory stitching（内存缝合）**：在融合 phase 的 Layer II 中，把原本因为 reduction 等导致无法直接 loop fusion 的 micro-graphs，通过共享局部内存（比如 GPU 的 shared memory 或寄存器）连接起来。这允许跨 micro-graphs 的进一步融合。
+- **Parallelism stitching（并行缝合）**：在融合 phase 的 Layer III 中，发掘**相互独立算子或分支之间的并行性**，把它们打包到同一个 kernel 中并行执行，最大化硬件利用率。
+    
+
+> 简单来说：
+> - stitching 在这里是**扩展融合空间的一种手段**，目的是让更多算子能一起执行，不仅仅依赖传统的生产者-消费者关系，还考虑到内存层次结构和硬件并行度。
+> - stitching 是对传统 loop fusion 的补充：loop fusion 注重单一路径上的数据局部性，而 stitching 注重跨路径的融合与并行。
+>
+![](https://blog-1327458544.cos.ap-guangzhou.myqcloud.com/N2025/20250724114007756.png)
+![](https://blog-1327458544.cos.ap-guangzhou.myqcloud.com/N2025/20250724114024797.png)
+
+
+
+![](https://blog-1327458544.cos.ap-guangzhou.myqcloud.com/N2025/20250724125028517.png)
+
+
+### Hydrozoa: Dynamic Hybrid-Parallel DNN Training on Serverless Containers
+
+![](https://blog-1327458544.cos.ap-guangzhou.myqcloud.com/N2025/20250724124742488.png)
+
 
 ##  OSDI 23
 
